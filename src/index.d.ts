@@ -156,6 +156,29 @@ declare namespace connect {
     readonly ringtoneUrl?: string;
   }
 
+  interface LoginOptions {
+    /*
+    * Whether to auto close the login prompt.
+    */
+    autoClose?: boolean,
+    /* 
+    * The height of the login prompt window.
+    */
+    height?: number,
+    /* 
+    * The width of the login prompt window.
+    */
+    width?: number,
+    /* 
+    * The top of the login prompt window.
+    */
+    top?: number,
+    /* 
+    * The left of the login prompt window.
+    */
+    left?: number
+  }
+
   interface InitCCPOptions {
     /**
      * The URL of the CCP.
@@ -176,8 +199,15 @@ declare namespace connect {
     readonly loginPopup?: boolean;
 
     /**
-     * Set to `true` in conjunction with the `loginPopup` parameter to automatically close the login Popup window once the authentication step has completed.
-     * If the login page opened in a new tab, this parameter will also auto-close that tab.
+     * Options to open login popup in a new window instead of a new tab. If loginPopup is set to
+     * `false`, these options will be ignored.
+     */
+    readonly loginOptions?: LoginOptions;
+
+    /**
+     * Set to `true` in conjunction with the `loginPopup` parameter to automatically close the login
+     * Popup window once the authentication step has completed. If the login page opened in a new
+     * tab, this parameter will also auto-close that tab.
      * @default false
      */
     readonly loginPopupAutoClose?: boolean;
